@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,11 @@ class MainWidgetPage extends StatefulWidget{
 
 class _MainWidgetState extends State<MainWidgetPage>{
   bool isClick = false;
+  late Color myColor;
+  int currentPage = 0;
+
+  GlobalKey bottomNavigationKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +37,34 @@ class _MainWidgetState extends State<MainWidgetPage>{
         ],
       ),
       body: _buildBody(),
+      bottomNavigationBar: FancyBottomNavigation(
+        onTabChangedListener: (int position) {
+          setState(() {
+            currentPage = position;
+          });
+        },
+        tabs: [
+          TabData(iconData: Icons.home, title: "Home",
+          onclick: (){
+            final FancyBottomNavigationState fState = bottomNavigationKey
+                .currentState as FancyBottomNavigationState;
+            fState.setPage(2);
+            // Navigator.of(context).pushNamed('/home');
+          }),
+          TabData(iconData: Icons.star_border, title: "Favorite",
+              onclick: (){
+                // Navigator.of(context).pushNamed('/detail');
+              }),
+          TabData(iconData: Icons.menu_book, title: "Menu",
+              onclick: (){
+                // Navigator.of(context).pushNamed('/bottom');
+              }),
+          // TabData(iconData: Icons.notification_important, title: "Notification"),
+          TabData(iconData: Icons.account_circle, title: "Profile"),
+        ],
+        initialSelection: 0,
+        key: bottomNavigationKey,
+      ),
     );
   }
 
@@ -48,7 +82,7 @@ _buildBody() {
       children: [
         _searchEdit(),
         _typeCourse(),
-        _horizontalScroll()
+        _horizontalScroll(),
       ],
     ),
   );

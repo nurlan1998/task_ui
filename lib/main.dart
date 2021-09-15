@@ -17,7 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: MainWidgetPage()
-      home: MainWidgetPage(),
+      // home: MainWidgetPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context) => MainWidgetPage(),
+        'detail' : (BuildContext context) => DetailWidgetPage(),
+        'bottom' : (BuildContext context) => ModalBottomSheet()
+      },
     );
   }
 }
