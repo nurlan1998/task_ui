@@ -1,28 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:task_ui/widget_bottom_sheet.dart';
-import 'package:task_ui/widget_detail.dart';
-import 'package:task_ui/widget_main.dart';
-
-import 'course.dart';
+import 'package:task_ui/screens/screen_detail.dart';
+import 'package:task_ui/screens/screen_main.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      // home: DetailWidgetPage(),
       // home: MainWidgetPage()
-      // home: MainWidgetPage(),
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => MainWidgetPage(),
-        'detail' : (BuildContext context) => DetailWidgetPage(),
-        'bottom' : (BuildContext context) => ModalBottomSheet()
+        '/': (BuildContext context) => const MainWidgetPage(),
+        '/detail' : (BuildContext context) => const DetailWidgetPage(),
       },
     );
   }
