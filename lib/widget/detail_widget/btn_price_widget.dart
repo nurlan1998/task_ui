@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_ui/widget/bottom_sheet_widget/bottom_sheet_widget.dart';
 
+//кнопки внизу скролла второй страницы
 class BtnPriceWidget extends StatefulWidget{
   const BtnPriceWidget({Key? key}) : super(key: key);
 

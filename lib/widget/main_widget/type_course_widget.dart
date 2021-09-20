@@ -10,6 +10,7 @@ class TypeCourseWidget extends StatefulWidget{
 }
 
 class _TypeCourseState extends State<TypeCourseWidget>{
+  //нужно сделать через enum
   bool _allTopicPressed = false;
   bool _newestPressed = false;
   bool _popularPressed = false;

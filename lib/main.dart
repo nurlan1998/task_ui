@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_ui/screens/screen_detail.dart';
 import 'package:task_ui/screens/screen_main.dart';
 
 void main() {
@@ -13,15 +12,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
 
       // home: DetailWidgetPage(),
-      // home: MainWidgetPage()
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => const MainWidgetPage(),
-        '/detail' : (BuildContext context) => const DetailWidgetPage(),
-      },
+      home: MainWidgetPage()
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (BuildContext context) => const MainWidgetPage(),
+      //   '/detail' : (BuildContext context) => const DetailWidgetPage(),
+      // },
     );
   }
 }

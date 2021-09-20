@@ -15,13 +15,11 @@ class BottomSheetWidget extends StatelessWidget {
         children: <Widget>[
           // Text("Price"),
           Container(
-            margin: const EdgeInsets.only(
-                left: 16.0, top: 16.0, bottom: 16.0),
+            margin: const EdgeInsets.only(left: 16.0, top: 16.0, bottom: 16.0),
             alignment: Alignment.topLeft,
             child: const Text(
               "Rating",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
           Row(
@@ -34,51 +32,49 @@ class BottomSheetWidget extends StatelessWidget {
             ],
           ),
           Container(
-              margin: const EdgeInsets.only(
-                  left: 16.0, top: 16.0, bottom: 16.0),
+              margin:
+                  const EdgeInsets.only(left: 16.0, top: 16.0, bottom: 16.0),
               alignment: Alignment.topLeft,
               child: const Text(
                 "Categories",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 20.0),
-              )
-          ),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 4.0,bottom: 64.0),
-                    height: 60,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(
-                          color: Colors.blue,
-                        )
-                    ),
-                    child: const StyledButton(
-                      label: 'AllTopic',
-                      icon: Icons.local_fire_department, borderColor: Colors.blue,
-                    ),
+                child: Container(
+                  margin: const EdgeInsets.only(right: 4.0, bottom: 64.0),
+                  height: 60,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(
+                        color: Colors.blue,
+                      )),
+                  child: const StyledButton(
+                    label: 'AllTopic',
+                    icon: Icons.local_fire_department,
+                    borderColor: Colors.blue,
                   ),
+                ),
               ),
               Expanded(
-                  child: Container(
-                    height: 60,
-                    width: 20,
-                    margin: const EdgeInsets.only(left: 4.0,bottom: 64.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(
-                          color: Colors.blue,
-                        )
-                    ),
-                    child: const StyledButton(
-                      label: 'Popular',
-                      icon: Icons.flash_on_rounded, borderColor: Colors.orange,
-                    ),
+                child: Container(
+                  height: 60,
+                  width: 20,
+                  margin: const EdgeInsets.only(left: 4.0, bottom: 64.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(
+                        color: Colors.blue,
+                      )),
+                  child: const StyledButton(
+                    label: 'Popular',
+                    icon: Icons.flash_on_rounded,
+                    borderColor: Colors.orange,
                   ),
+                ),
               ),
             ],
           ),
@@ -87,18 +83,24 @@ class BottomSheetWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Expanded(
-                  child: Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(right: 4.0),
-                    child: const StyledButton(label: 'Reset', borderColor: Colors.white,),
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.only(right: 4.0),
+                  child: const StyledButton(
+                    label: 'Reset',
+                    borderColor: Colors.white,
                   ),
+                ),
               ),
               Expanded(
-                  child: Container(
-                    height: 60,
-                    margin: const EdgeInsets.only(left: 4.0),
-                    child: const StyledButton(label: 'Apply', borderColor: Colors.white,),
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.only(left: 4.0),
+                  child: const StyledButton(
+                    label: 'Apply',
+                    borderColor: Colors.white,
                   ),
+                ),
               ),
             ],
           ),
