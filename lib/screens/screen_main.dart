@@ -1,6 +1,7 @@
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:task_ui/screens/two_page_widget.dart';
 import 'package:task_ui/widget/detail_widget/btn_price_widget.dart';
 import 'package:task_ui/widget/detail_widget/description_play_list_widget.dart';
 import 'package:task_ui/widget/detail_widget/header_image_widget.dart';
@@ -17,6 +18,10 @@ class MainWidgetPage extends StatefulWidget {
 }
 
 class _MainWidgetState extends State<MainWidgetPage> {
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
   int currentPage = 0;
 
   @override
@@ -41,11 +46,18 @@ class _MainWidgetState extends State<MainWidgetPage> {
                   onPressed: () {}, icon: Image.asset("assets/profile.png")))
         ],
       ),
-      body: SingleChildScrollView(
-          child: Container(
-        padding: const EdgeInsets.all(16),
-        child: _getPage(currentPage),
-      )),
+      body: PageView(
+        controller: pageController,
+        children: [
+          SingleChildScrollView(
+              child: Container(
+            padding: const EdgeInsets.all(16),
+            child: _getPage(currentPage),
+          )),
+          const TwoPageWidget(),
+        ],
+      ),
+
       bottomNavigationBar: FancyBottomNavigation(
         onTabChangedListener: (int position) {
           setState(() {
@@ -71,6 +83,12 @@ class _MainWidgetState extends State<MainWidgetPage> {
         // key: bottomNavigationKey,
       ),
     );
+  }
+
+  void pageChanged(int index) {
+    setState(() {
+      currentPage = index;
+    });
   }
 
   _getPage(int page) {
