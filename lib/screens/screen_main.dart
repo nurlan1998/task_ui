@@ -1,4 +1,4 @@
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_ui/screens/two_page_widget.dart';
@@ -18,11 +18,9 @@ class MainWidgetPage extends StatefulWidget {
 }
 
 class _MainWidgetState extends State<MainWidgetPage> {
-  PageController pageController = PageController(
-    initialPage: 0,
-    keepPage: true,
-  );
   int currentPage = 0;
+  PageController? pageController;
+  GlobalKey bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,14 @@ class _MainWidgetState extends State<MainWidgetPage> {
         ],
       ),
       body: PageView(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
         controller: pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
         children: [
           SingleChildScrollView(
               child: Container(
@@ -58,37 +63,51 @@ class _MainWidgetState extends State<MainWidgetPage> {
         ],
       ),
 
-      bottomNavigationBar: FancyBottomNavigation(
-        onTabChangedListener: (int position) {
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: currentPage,
+        showElevation: true,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        onItemSelected: (int value) {
           setState(() {
-            currentPage = position;
+            currentPage = value;
           });
+          pageController!.jumpToPage(value);
         },
-        tabs: [
-          TabData(
-            iconData: Icons.home,
-            title: "Home",
+        items: [
+          BottomNavyBarItem(
+            icon: const Icon(Icons.apps),
+            title: const Text('Home'),
+            activeColor: Colors.red,
+            textAlign: TextAlign.center,
           ),
-          TabData(
-            iconData: Icons.star_border,
-            title: "Favorite",
+          BottomNavyBarItem(
+            icon: const Icon(Icons.star_border),
+            title: const Text('Favorite'),
+            activeColor: Colors.pink,
+            textAlign: TextAlign.center,
           ),
-          TabData(
-            iconData: Icons.menu_book,
-            title: "Menu",
+          BottomNavyBarItem(
+            icon: const Icon(Icons.menu_book),
+            title: const Text('Menu'),
+            activeColor: Colors.blue,
+            textAlign: TextAlign.center,
           ),
-          // TabData(iconData: Icons.notification_important, title: "Notification"),
-          TabData(iconData: Icons.account_circle, title: "Profile"),
+          BottomNavyBarItem(
+            icon: const Icon(Icons.notification_important),
+            title: const Text('Notification'),
+            activeColor: Colors.orange,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: const Icon(Icons.people),
+            title: const Text('Profile'),
+            activeColor: Colors.purpleAccent,
+            textAlign: TextAlign.center,
+          ),
         ],
-        // key: bottomNavigationKey,
       ),
     );
-  }
-
-  void pageChanged(int index) {
-    setState(() {
-      currentPage = index;
-    });
   }
 
   _getPage(int page) {
@@ -119,6 +138,7 @@ class _MainWidgetState extends State<MainWidgetPage> {
 
   @override
   void initState() {
+    pageController = PageController();
     super.initState();
   }
 }
