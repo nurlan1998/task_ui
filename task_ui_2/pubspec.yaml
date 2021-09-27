@@ -29,6 +29,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  carousel_slider: ^4.0.0
+  bottom_navy_bar: ^6.0.0
+  charts_flutter: ^0.9.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -56,6 +59,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/pr.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
