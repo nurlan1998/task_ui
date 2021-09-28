@@ -13,11 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
-        appBarTheme: const AppBarTheme(color: Colors.black)
-      ),
+          brightness: Brightness.dark,
+          appBarTheme: const AppBarTheme(color: Colors.black)),
       // home: const HomePageScreen(),
-      home: TwoPage(),
+      home: const TwoPage(),
     );
   }
 }
