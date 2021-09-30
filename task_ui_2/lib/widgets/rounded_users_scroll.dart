@@ -10,8 +10,8 @@ class UsersHorizontalScrollWidget extends StatelessWidget {
     return Container(
       color: Colors.black,
         margin: EdgeInsets.all(8.0),
-        width: 400,
-        height: 64,
+        width: 350,
+        height: 50,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: users.length,

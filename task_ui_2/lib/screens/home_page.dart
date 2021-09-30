@@ -1,115 +1,87 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_ui_2/widgets/card_horizontal_scroll.dart';
-import 'package:task_ui_2/widgets/filtr_btn_widget.dart';
-import 'package:task_ui_2/widgets/price_add_card_widget.dart';
-import 'package:task_ui_2/widgets/rounded_users_scroll.dart';
+import 'package:task_ui_2/screens/home_screen.dart';
+import 'package:task_ui_2/screens/profile_screen.dart';
+import 'package:task_ui_2/screens/statistics_screen.dart';
+import 'package:task_ui_2/screens/wallet_screen.dart';
 
-class HomePageScreen extends StatefulWidget {
-  const HomePageScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget{
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePageScreen>{
-  int currentPage = 0;
-  PageController? pageController;
+class _HomePageState extends State<HomePage>{
+  int selectedPage = 0;
+
+  final _pageOptions = [
+    const HomePageScreen(),
+    const TwoPage(),
+    const WalletScreen(),
+    const ProfileScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text("Nicholas"),
-        leading: GestureDetector(
-          child: Image.asset(
-              'assets/hello.png',
-          ),
-        ),
-        actions: [
-          Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(
-                  Icons.message_outlined,
-                  size: 20.0,
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(
-                  Icons.notifications_none_outlined,
-                  size: 20.0,
-                ),
-              )),
-        ],
-      ),
-      body: SingleChildScrollView(
-        physics: const ScrollPhysics(),
-        child: Column(
+        backgroundColor: Colors.black12,
+        // body: _pageOptions[selectedPage],
+        body: Stack(
           children: [
-            const TvPriceBtnAddCardWidget(),
-            const CardHorizontalScrollWidget(),
             Container(
-              margin:
-              const EdgeInsets.only(top: 16.0, left: 32.0, bottom: 8.0),
-              alignment: Alignment.centerLeft,
-              child: const Text("Send Money"),
+              height: 700,
+              child: _pageOptions[selectedPage],
             ),
-            const UsersHorizontalScrollWidget(),
-            const Divider(
-              height: 20,
-              thickness: 1,
-              indent: 20,
-              endIndent: 20,
-            ),
-            const SizedBox(height: 8.0,),
-            const BtnFilterWidget(),
-            const SizedBox(height: 16.0,),
+            Positioned(
+              bottom: 8.0,
+                  right: 16.0,
+                  left: 16.0,
+                  child: bottomNavigationBar
+              )
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: currentPage,
-        showElevation: false,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        containerHeight: 64.0,
-        itemCornerRadius: 40.0,
-        curve: Curves.easeIn,
-        onItemSelected: (int value) {
-          setState(() {
-            currentPage = value;
-          });
-          pageController!.jumpToPage(value);
-        },
-        items: [
-          BottomNavyBarItem(
-            activeColor: Colors.black12,
-            inactiveColor: Colors.white,
-            icon: const Icon(Icons.apps),
-            title: const Text('Home',style: TextStyle(color: Colors.white),),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            activeColor: Colors.black12,
-            inactiveColor: Colors.white,
-            icon: const Icon(Icons.star_border),
-            title: const Text('Favorite',style: TextStyle(color: Colors.white),),
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            activeColor: Colors.black12,
-            inactiveColor: Colors.white,
-            icon: const Icon(Icons.person),
-            title: const Text('Profile',style: TextStyle(color: Colors.white),),
-            textAlign: TextAlign.center,
-          ),
-        ],
+    );
+  }
+  Widget get bottomNavigationBar {
+    return Container(
+      height: 80,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(20),
+          topLeft: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+        child: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.usb),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.assignment_ind),
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.multiline_chart),
+            ),
+          ],
+          onTap: (index){
+            setState(() {
+              selectedPage = index;
+            });
+          },
+          currentIndex: selectedPage,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          showUnselectedLabels: true,
+        ),
       ),
     );
   }

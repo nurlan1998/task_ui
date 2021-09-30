@@ -15,22 +15,23 @@ class _TvPriceBtnAddCardWidgetState extends State<TvPriceBtnAddCardWidget>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 16.0,right: 16.0),
+            margin: const EdgeInsets.only(left: 20.0,right: 16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   '2 264,84',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
+                      fontSize: 18.0),
                 ),
-                Text("Total balance",style: TextStyle(color: Colors.grey[800]),)
+                Text("Total balance",style: TextStyle(fontSize: 12,color: Colors.grey[800]),)
               ],
             ),
           ),
           Container(
             alignment: Alignment.topRight,
-            margin: const EdgeInsets.all(32.0,),
+            margin: const EdgeInsets.only(left:32.0,right: 32.0,top: 8.0,bottom: 8.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.grey[900], // This is what you need!

@@ -16,8 +16,8 @@ class ItemUserRoundWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(100.0),
           child: Image.asset(
             'assets/profile-2.jpg',
-            width: 64.0,
-            height: 20.0,
+            width: 50.0,
+            height: 10.0,
             fit: BoxFit.fill,
           ),
         ));
