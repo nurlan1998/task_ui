@@ -15,7 +15,7 @@ class ItemUserRoundWidget extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(100.0),
           child: Image.asset(
-            'assets/profile-2.jpg',
+            user.pathImage,
             width: 50.0,
             height: 10.0,
             fit: BoxFit.fill,

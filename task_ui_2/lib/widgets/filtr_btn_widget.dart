@@ -37,9 +37,15 @@ class _BtnFilterState extends State<BtnFilterWidget> {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            BtnSavingsWidget(label: 'scsssf'),
-            BtnSavingsWidget(label: 'scsssf'),
+          children: const <Widget>[
+            BtnSavingsWidget(
+              label: 'Super car \n 43,498/100,000',
+              imageSavings: 'assets/cars.png',
+            ),
+            BtnSavingsWidget(
+              label: 'Iphone 13 Pro \n 43,498/100,000',
+              imageSavings: 'assets/phone.png',
+            ),
           ],
         ),
       ],

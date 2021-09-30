@@ -30,12 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
   carousel_slider: ^4.0.0
-  bottom_navy_bar: ^6.0.0
-  charts_flutter: ^0.10.0
   syncfusion_flutter_charts: ^19.2.62
   fl_chart: ^0.40.0
-
-#  flutter_linkify: ^3.1.2
+  flutter_icons: ^1.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

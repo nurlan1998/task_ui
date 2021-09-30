@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:task_ui_2/data/user.dart';
 
-class ItemTransactionsWidget extends StatefulWidget{
-  const ItemTransactionsWidget({Key? key}) : super(key: key);
+class ItemTransactionsWidget extends StatelessWidget {
+  final User user;
 
-  @override
-  _ItemTransactionsState createState() => _ItemTransactionsState();
-}
+  const ItemTransactionsWidget({Key? key, required this.user}) : super(key: key);
 
-class _ItemTransactionsState extends State<ItemTransactionsWidget>{
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,11 +15,11 @@ class _ItemTransactionsState extends State<ItemTransactionsWidget>{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(left: 2.0,top: 16.0),
+              margin: const EdgeInsets.only(left: 2.0, top: 16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  'assets/profile-3.jpg',
+                  user.pathImage,
                   height: 50,
                   width: 50,
                   fit: BoxFit.fill,
@@ -30,13 +28,13 @@ class _ItemTransactionsState extends State<ItemTransactionsWidget>{
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: const <Widget>[
                 Text('From DAmanda Soul'),
                 Text('Received')
               ],
             ),
-            Text('100 USD'),
-            Icon(Icons.arrow_forward_ios),
+            const Text('100 USD'),
+            const Icon(Icons.arrow_forward_ios),
           ],
         ),
         const Divider(

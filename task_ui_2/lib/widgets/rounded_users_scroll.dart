@@ -9,7 +9,7 @@ class UsersHorizontalScrollWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-        margin: EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
         width: 350,
         height: 50,
         child: ListView.builder(
