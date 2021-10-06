@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       // body: _pageOptions[selectedPage],
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 700,
             child: _pageOptions[selectedPage],
           ),
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get bottomNavigationBar {
-    return Container(
+    return SizedBox(
       height: 80,
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
