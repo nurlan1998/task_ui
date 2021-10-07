@@ -2,7 +2,10 @@ import 'package:auth_learn/request_token_model.dart';
 import 'package:auth_learn/widget/text_field_widget.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'constants.dart';
 import 'home_page.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({Key? key}) : super(key: key);
@@ -84,7 +87,11 @@ class _MyCustomFormState extends State<MyCustomForm> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ElevatedButton(onPressed: _onPressed, child: const Text('LogIn')),
-            ElevatedButton(onPressed: () {}, child: const Text('SignUp')),
+            ElevatedButton(
+                onPressed: () {
+                  launch('https://www.themoviedb.org/signup');
+                },
+                child: const Text('SignUp')),
           ],
         ),
       ],
@@ -93,7 +100,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   getToken(username, password) async {
     final response = await _dio.get(
-        'https://api.themoviedb.org/3/authentication/token/new?api_key=7d6c3c25fa66a886b27c1c4437b07c16');
+        '${ApiConstants.BASE_URL}${ApiConstants.PATH_GET_TOKEN}${'?api_key='}${ApiConstants.API_KEY}');
     final Map<String, dynamic> parsed = response.data;
     final request = RequestTokenModel.fromJson(parsed);
     print(request.requestToken);
@@ -107,7 +114,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
         {'username': username, 'password': password, 'request_token': token});
     try {
       final response = await _dio.post(
-          "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=7d6c3c25fa66a886b27c1c4437b07c16",
+          '${ApiConstants.BASE_URL}${ApiConstants.PATH_LOGIN_TOKEN}${'?api_key='}${ApiConstants.API_KEY}',
+          // "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=7d6c3c25fa66a886b27c1c4437b07c16",
           data: formData,
           options: Options(
             headers: {"Content-Type": "application/json"},

@@ -21,7 +21,7 @@ class TextFieldWidget extends StatelessWidget{
       obscureText: !passwordVisible,
       decoration: InputDecoration(
           hintText: hintText,
-          errorText: validate ? 'Заполните все поля' : null,
+          errorText: validate ? 'Заполните $hintText' : null,
           icon: Icon(icon),
           suffixIcon: btnSuffixIcon,
           border: OutlineInputBorder(
