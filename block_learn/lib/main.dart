@@ -1,39 +1,17 @@
-import 'package:block_learn/app/service_locator.dart';
 import 'package:block_learn/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
-  MyAppState createState() => MyAppState();
-}
-
-class MyAppState extends State<MyApp>{
-  bool _initialized = false;
-
-    @override
-    Widget build(BuildContext context) {
-      if(!_initialized){
-        return Container();
-      }
-      return MaterialApp(
-        home: HomePage(),
-      );
-    }
-
-    @override
-  void initState() {
-      super.initState();
-      initialize().then((_){
-        setState(() {
-          _initialized = true;
-        });
-      });
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(),
+    );
   }
-    Future<void> initialize() async {
-      await ServiceLocator.setup();
-    }
 }
