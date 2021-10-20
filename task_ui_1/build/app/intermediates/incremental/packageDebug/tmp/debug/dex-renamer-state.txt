@@ -1,0 +1,4 @@
+#Wed Oct 20 17:36:04 UZT 2021
+base.0=D\:\\123\\task_ui\\task_ui_1\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

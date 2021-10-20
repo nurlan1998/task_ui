@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'home_page.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyCustomForm extends StatefulWidget {
